@@ -13,7 +13,10 @@ int main()
 		<< f0*f1 << std::endl
 		<< f0/f1 << std::endl
 		<< (f0 > f2) << std::endl
-		<< (f0 < f2) << std::endl;
+		<< (f0 < f2) << std::endl
+		<< (Fraction(12,3) == 4) << std::endl
+		<< (Fraction(12,4) == 4) << std::endl
+		<< (Fraction(12,4) / 3) << std::endl;
 	
 	return 0;
 }

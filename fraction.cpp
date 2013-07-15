@@ -1,3 +1,22 @@
+/**
+ * 
+ * Copyright (C) 2012-2013 Hiroyuki Baba, All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR POURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
 #include "fraction.h"
 
 Fraction::Fraction(int numerator, int denominator) throw(const char*)
@@ -58,6 +77,48 @@ Fraction operator/(const Fraction& l, const Fraction& r)
 		l.denom()*(r.numer()>0?r.numer():-r.numer()));
 }
 
+Fraction operator+(const Fraction& l, const int& r)
+{
+	return l + Fraction(r,1);
+}
+
+Fraction operator-(const Fraction& l, const int& r)
+{
+	return l - Fraction(r,1);
+}
+
+Fraction operator*(const Fraction& l, const int& r)
+{
+	return l * Fraction(r,1);
+}
+
+Fraction operator/(const Fraction& l, const int& r)
+{
+	return l / Fraction(r,1);
+}
+
+
+Fraction operator+(const int& l, const Fraction& r)
+{
+	return Fraction(l,1) + r;
+}
+
+Fraction operator-(const int& l, const Fraction& r)
+{
+	return Fraction(l,1) - r;
+}
+
+Fraction operator*(const int& l, const Fraction& r)
+{
+	return Fraction(l,1) * r;
+}
+
+Fraction operator/(const int& l, const Fraction& r)
+{
+	return Fraction(l,1) / r;
+}
+
+
 
 bool operator==(const Fraction& l, const Fraction& r)
 {
@@ -83,6 +144,59 @@ bool operator<=(const Fraction& l, const Fraction& r)
 {
 	return (l - r).numer() <= 0;
 }
+
+
+bool operator==(const Fraction& l, const int& r)
+{
+	return (l == Fraction(r,1));
+}
+
+bool operator>(const Fraction& l, const int& r)
+{
+	return (l > Fraction(r,1));
+}
+
+bool operator>=(const Fraction& l, const int& r)
+{
+	return (l >= Fraction(r,1));
+}
+
+bool operator<(const Fraction& l, const int& r)
+{
+	return (l < Fraction(r,1));
+}
+
+bool operator<=(const Fraction& l, const int& r)
+{
+	return (l <= Fraction(r,1));
+}
+
+
+bool operator==(const int& l, const Fraction& r)
+{
+	return (Fraction(l,1) == r);
+}
+
+bool operator>(const int& l, const Fraction& r)
+{
+	return (Fraction(l,1) > r);
+}
+
+bool operator>=(const int& l, const Fraction& r)
+{
+	return (Fraction(l,1) >= r);
+}
+
+bool operator<(const int& l, const Fraction& r)
+{
+	return (Fraction(l,1) < r);
+}
+
+bool operator<=(const int& l, const Fraction& r)
+{
+	return (Fraction(l,1) <= r);
+}
+
 
 std::ostream& operator<<(std::ostream& os, const Fraction& f)
 {
